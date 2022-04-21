@@ -20,7 +20,6 @@ namespace QuickTools
 
         private RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);//注册表信息(是否开机自启动)
 
-
         public class Hotkey : System.Windows.Forms.IMessageFilter
         {
             Hashtable keyIDs = new Hashtable();
@@ -141,6 +140,11 @@ namespace QuickTools
 
         }
 
+        private void SearchStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SearchForm form = new SearchForm();
+            form.ShowDialog();
+        }
 
         private void CutScreenStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -168,12 +172,6 @@ namespace QuickTools
         {
             CutHistoryForm cutHistoryForm = new CutHistoryForm(historyCutPictures);
             cutHistoryForm.ShowDialog();
-        }
-
-        private void SearchStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SearchForm form = new SearchForm();
-            form.ShowDialog();
         }
 
         private void IsAutoOpen_Click(object sender, EventArgs e)
