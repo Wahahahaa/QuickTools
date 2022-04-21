@@ -36,9 +36,10 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.SearchStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CutScreenStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CutHistory = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.CutHistory = new System.Windows.Forms.ToolStripMenuItem();
+            this.IsAutoOpen = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,9 +59,10 @@
             this.CutScreenStripMenuItem,
             this.CutHistory,
             this.toolStripSeparator2,
+            this.IsAutoOpen,
             this.ExitToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 148);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 170);
             // 
             // DispalyToolStripMenuItem
             // 
@@ -89,6 +91,13 @@
             this.CutScreenStripMenuItem.Text = "截图";
             this.CutScreenStripMenuItem.Click += new System.EventHandler(this.CutScreenStripMenuItem_Click);
             // 
+            // CutHistory
+            // 
+            this.CutHistory.Name = "CutHistory";
+            this.CutHistory.Size = new System.Drawing.Size(180, 22);
+            this.CutHistory.Text = "截图历史";
+            this.CutHistory.Click += new System.EventHandler(this.CutHistory_Click);
+            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
@@ -101,12 +110,12 @@
             this.ExitToolStripMenuItem.Text = "退出";
             this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
-            // CutHistory
+            // IsAutoOpen
             // 
-            this.CutHistory.Name = "CutHistory";
-            this.CutHistory.Size = new System.Drawing.Size(180, 22);
-            this.CutHistory.Text = "截图历史";
-            this.CutHistory.Click += new System.EventHandler(this.CutHistory_Click);
+            this.IsAutoOpen.Name = "IsAutoOpen";
+            this.IsAutoOpen.Size = new System.Drawing.Size(180, 22);
+            this.IsAutoOpen.Text = "XX开机自启动";
+            this.IsAutoOpen.Click += new System.EventHandler(this.IsAutoOpen_Click);
             // 
             // MainForm
             // 
@@ -137,6 +146,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem SearchStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem CutHistory;
+        private System.Windows.Forms.ToolStripMenuItem IsAutoOpen;
     }
 }
 

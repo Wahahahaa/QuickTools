@@ -1,13 +1,9 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QuickTools
@@ -21,6 +17,9 @@ namespace QuickTools
 
         private List<Bitmap> historyCutPictures = new List<Bitmap>(); //历史截图图片
         private bool isAlreadyOpenCutForm = false; //是否已经打开截屏页面
+
+        private RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);//注册表信息(是否开机自启动)
+
 
         public class Hotkey : System.Windows.Forms.IMessageFilter
         {
@@ -129,12 +128,19 @@ namespace QuickTools
         {
             //注册快捷键
             SetHotKey();
+
+            //检测是否已经设置开机自启动
+            if (registryKey.GetValue("QuickTools") != null && registryKey.GetValue("QuickTools").ToString().Equals(this.GetType().Assembly.Location))
+            {
+                this.IsAutoOpen.Text = "关闭开机自启动";
+            }
+            else
+            {
+                this.IsAutoOpen.Text = "开启开机自启动";
+            }
+
         }
 
-        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
 
         private void CutScreenStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -170,6 +176,23 @@ namespace QuickTools
             form.ShowDialog();
         }
 
+        private void IsAutoOpen_Click(object sender, EventArgs e)
+        {
+            if ("开启开机自启动".Equals(IsAutoOpen.Text))
+            {
+                registryKey.SetValue("QuickTools", this.GetType().Assembly.Location);
+                IsAutoOpen.Text = "关闭开机自启动";
+            }
+            else
+            {
+                registryKey.DeleteValue("QuickTools");
+                IsAutoOpen.Text = "开启开机自启动";
+            }
+        }
 
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
