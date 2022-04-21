@@ -14,11 +14,13 @@ namespace QuickTools
 {
     public partial class MainForm : Form
     {
-        private int CutHotkey;
-        private int SearchHotkey;
-        public delegate void HotkeyEventHandler(int HotKeyID);
-        private List<Bitmap> historyCutPictures = new List<Bitmap>(); //历史截图图片
+        private int CutHotkey;  //截图快捷键
+        private int SearchHotkey; //搜索快捷键
 
+        public delegate void HotkeyEventHandler(int HotKeyID);
+
+        private List<Bitmap> historyCutPictures = new List<Bitmap>(); //历史截图图片
+        private bool isAlreadyOpenCutForm = false; //是否已经打开截屏页面
 
         public class Hotkey : System.Windows.Forms.IMessageFilter
         {
@@ -136,15 +138,24 @@ namespace QuickTools
 
         private void CutScreenStripMenuItem_Click(object sender, EventArgs e)
         {
+            //如果已经打开截屏界面，则不允许打开新的截屏页面
+            if(isAlreadyOpenCutForm)
+            {
+                return;
+            }
+
+            isAlreadyOpenCutForm = true;
+
             CutForm form = new CutForm();
             form.ShowDialog();
-
             if (form.GetBitmap() != null)
             {
                 historyCutPictures.Add(form.GetBitmap());
                 CutPictureDisplayForm displayForm = new CutPictureDisplayForm(form.GetBitmap());
                 displayForm.Show();
             }
+
+            isAlreadyOpenCutForm = false;
         }
 
         private void CutHistory_Click(object sender, EventArgs e)

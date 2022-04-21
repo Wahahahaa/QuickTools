@@ -81,17 +81,16 @@ namespace QuickTools
         {
             if (isStartCut)
             {
-                //去除最后的矩形框线
                 if (size.Width != 0 && size.Height != 0)
                 {
                     ControlPaint.DrawReversibleFrame(new Rectangle(temp, size), Color.Transparent, FrameStyle.Dashed);
                     havePainted = false;
+                    bitmap = new Bitmap(size.Width, size.Height);
+                    Graphics g = Graphics.FromImage(bitmap);
+                    g.CopyFromScreen(temp, new Point(0, 0), bitmap.Size);
                 }
                 this.Opacity = 0.0;
                 Thread.Sleep(200);
-                bitmap = new Bitmap(size.Width, size.Height);
-                Graphics g = Graphics.FromImage(bitmap);
-                g.CopyFromScreen(temp, new Point(0, 0), bitmap.Size);
                 mouseDown = false;
             }
             this.Close();
