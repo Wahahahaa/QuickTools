@@ -63,7 +63,7 @@ namespace QuickTools
 
         private void PictureBox1_MouseLeave(object sender, EventArgs e)
         {
-            this.Opacity = 0.9;
+            this.Opacity = 1;
         }
 
         private void PictureBox1_MouseDown(object sender, MouseEventArgs e)

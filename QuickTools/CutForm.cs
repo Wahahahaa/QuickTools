@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QuickTools
@@ -23,6 +17,20 @@ namespace QuickTools
         public CutForm()
         {
             InitializeComponent();
+
+        }
+
+        private void CutForm_Load(object sender, EventArgs e)
+        {
+            Rectangle rect = System.Windows.Forms.SystemInformation.VirtualScreen;
+            int w = rect.Width, h = rect.Height;
+            if (this.Width != w || this.Height != h)
+            {
+                this.Width = w;
+                this.Height = h;
+                this.MaximumSize = this.MinimumSize = new System.Drawing.Size(w, h);
+                this.Location = new Point(0, 0);
+            }
         }
 
         public Bitmap GetBitmap()
@@ -54,11 +62,6 @@ namespace QuickTools
             
             if (isStartCut && mouseDown)
             {
-                //再画一遍，去除上次的边框线
-                if (size.Width != 0 && size.Height != 0 && havePainted)
-                {
-                    ControlPaint.DrawReversibleFrame(new Rectangle(temp, size), Color.Transparent, FrameStyle.Dashed);
-                }
 
 
                 end = e.Location;
@@ -71,7 +74,8 @@ namespace QuickTools
                 temp.Y = Math.Min(start.Y, end.Y);
                 if (size.Width != 0 && size.Height != 0)
                 {
-                    ControlPaint.DrawReversibleFrame(new Rectangle(temp, size), Color.Transparent, FrameStyle.Dashed);
+                    panel1.Location = new Point(start.X, start.Y);
+                    panel1.Size = new Size(size.Width, size.Height);
                     havePainted = true;
                 }
             }
@@ -83,7 +87,6 @@ namespace QuickTools
             {
                 if (size.Width != 0 && size.Height != 0)
                 {
-                    ControlPaint.DrawReversibleFrame(new Rectangle(temp, size), Color.Transparent, FrameStyle.Dashed);
                     havePainted = false;
                     bitmap = new Bitmap(size.Width, size.Height);
                     Graphics g = Graphics.FromImage(bitmap);
