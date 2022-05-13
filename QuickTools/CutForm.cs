@@ -74,7 +74,7 @@ namespace QuickTools
                 temp.Y = Math.Min(start.Y, end.Y);
                 if (size.Width != 0 && size.Height != 0)
                 {
-                    panel1.Location = new Point(start.X, start.Y);
+                    panel1.Location = new Point(Math.Min(start.X,end.X), Math.Min(start.Y,end.Y));
                     panel1.Size = new Size(size.Width, size.Height);
                     havePainted = true;
                 }
