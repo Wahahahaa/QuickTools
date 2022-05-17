@@ -31,6 +31,7 @@ namespace QuickTools
                 this.MaximumSize = this.MinimumSize = new System.Drawing.Size(w, h);
                 this.Location = new Point(0, 0);
             }
+            //MessageBox.Show(ScreenInfo.ScaleX.ToString());
         }
 
         public Bitmap GetBitmap()
@@ -50,9 +51,6 @@ namespace QuickTools
             if (isStartCut)
             { 
                 start = e.Location;
-                //缩放
-                start.X = (int)(start.X * ScreenInfo.ScaleX);
-                start.Y = (int)(start.Y * ScreenInfo.ScaleX);
                 mouseDown = true;
             }
         }
@@ -66,12 +64,10 @@ namespace QuickTools
 
                 end = e.Location;
                 //缩放
-                end.X = (int)(end.X * ScreenInfo.ScaleX);
-                end.Y = (int)(end.Y * ScreenInfo.ScaleX);
                 size.Width = Math.Abs(end.X  - start.X);
                 size.Height = Math.Abs(end.Y - start.Y);
-                temp.X = Math.Min(start.X,end.X);
-                temp.Y = Math.Min(start.Y, end.Y);
+                temp.X = (int)(Math.Min(start.X, end.X) * ScreenInfo.ScaleX);
+                temp.Y = (int)(Math.Min(start.Y, end.Y) * ScreenInfo.ScaleY);
                 if (size.Width != 0 && size.Height != 0)
                 {
                     panel1.Location = new Point(Math.Min(start.X,end.X), Math.Min(start.Y,end.Y));
@@ -88,7 +84,7 @@ namespace QuickTools
                 if (size.Width != 0 && size.Height != 0)
                 {
                     havePainted = false;
-                    bitmap = new Bitmap(size.Width, size.Height);
+                    bitmap = new Bitmap((int)(size.Width * ScreenInfo.ScaleX), (int)(size.Height * ScreenInfo.ScaleY));
                     Graphics g = Graphics.FromImage(bitmap);
                     g.CopyFromScreen(temp, new Point(0, 0), bitmap.Size);
                 }
