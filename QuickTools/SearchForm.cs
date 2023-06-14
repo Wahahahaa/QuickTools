@@ -1,14 +1,8 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Word;
+using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QuickTools
@@ -127,18 +121,64 @@ namespace QuickTools
             while (!_queue.IsCompleted)
             {
                 FileInfo file = _queue.Take();
-
-                string[] lines = File.ReadAllLines(file.FullName);
                 int i = 0;
-                foreach (string line in lines)
+                switch (file.Extension.ToString())
                 {
-                    i++;
-                    if (line.Contains(keyWord))
-                    {
-                        this.richTextBox.AppendText(file.FullName + "_"+ i + "行:"+line+ "\n\n");
-                        //Console.WriteLine(file.FullName + "_" + i + "行:" + line + "\n\n");
-                    }
+                    case ".dox":
+                    case ".docx": 
+                        object fileName = file.FullName;
+                        object MissingValue = Type.Missing;
+                        Microsoft.Office.Interop.Word.Application wp = new Microsoft.Office.Interop.Word.ApplicationClass();
+
+                        Microsoft.Office.Interop.Word.Document wd = wp.Documents.Open(ref fileName, ref MissingValue,
+                                                                                      ref MissingValue, ref MissingValue,
+                                                                                      ref MissingValue, ref MissingValue,
+                                                                                      ref MissingValue, ref MissingValue,
+                                                                                      ref MissingValue, ref MissingValue,
+                                                                                      ref MissingValue, ref MissingValue,
+                                                                                      ref MissingValue, ref MissingValue,
+                                                                                      ref MissingValue, ref MissingValue);
+
+                        Microsoft.Office.Interop.Word.Find wfnd;
+                        if (wd.Paragraphs != null && wd.Paragraphs.Count > 0)
+                        {
+                            int iCount = wd.Paragraphs.Count;
+                            for (i = 1; i <= iCount; i++)
+                            {
+                                wfnd = wd.Paragraphs[i].Range.Find;
+                                wfnd.ClearFormatting();
+                                wfnd.Text = keyWord;
+                                if (wfnd.Execute(ref MissingValue, ref MissingValue,
+                                    ref MissingValue, ref MissingValue,
+                                    ref MissingValue, ref MissingValue,
+                                    ref MissingValue, ref MissingValue,
+                                    ref MissingValue, ref MissingValue,
+                                    ref MissingValue, ref MissingValue,
+                                    ref MissingValue, ref MissingValue,
+                                    ref MissingValue))
+                                {
+                                    this.richTextBox.AppendText(file.FullName + "文档中包含指定的关键字！\n\n");
+                                    break;
+                                }
+                            }
+                        }
+                        break;
+
+                    default:
+                        string[] lines = File.ReadAllLines(file.FullName);
+                        foreach (string line in lines)
+                        {
+                            i++;
+                            if (line.Contains(keyWord))
+                            {
+                                this.richTextBox.AppendText(file.FullName + "_" + i + "行:" + line + "\n\n");
+                            }
+                        }
+                        break;
                 }
+
+               
+
             }
             
         }

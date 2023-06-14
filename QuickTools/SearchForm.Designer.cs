@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SearchForm));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.btExit = new System.Windows.Forms.Button();
             this.btConfirm = new System.Windows.Forms.Button();
@@ -128,7 +129,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(12, 85);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 12);
+            this.label3.Size = new System.Drawing.Size(72, 13);
             this.label3.TabIndex = 0;
             this.label3.Text = "搜索线程数";
             // 
@@ -137,7 +138,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 46);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 12);
+            this.label2.Size = new System.Drawing.Size(46, 13);
             this.label2.TabIndex = 0;
             this.label2.Text = "关键词";
             // 
@@ -146,7 +147,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 12);
+            this.label1.Size = new System.Drawing.Size(33, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "目录";
             // 
@@ -165,6 +166,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(329, 514);
             this.Controls.Add(this.splitContainer1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SearchForm";
