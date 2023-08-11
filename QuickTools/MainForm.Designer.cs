@@ -34,12 +34,11 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.DispalyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.SearchStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CutScreenStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CutHistory = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.IsAutoOpen = new System.Windows.Forms.ToolStripMenuItem();
+            this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,78 +51,71 @@
             // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.DispalyToolStripMenuItem,
             this.toolStripSeparator1,
-            this.SearchStripMenuItem,
             this.CutScreenStripMenuItem,
             this.CutHistory,
             this.toolStripSeparator2,
             this.IsAutoOpen,
             this.ExitToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 170);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(211, 164);
             // 
             // DispalyToolStripMenuItem
             // 
             this.DispalyToolStripMenuItem.Name = "DispalyToolStripMenuItem";
-            this.DispalyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.DispalyToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
             this.DispalyToolStripMenuItem.Text = "显示";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
-            // 
-            // SearchStripMenuItem
-            // 
-            this.SearchStripMenuItem.Name = "SearchStripMenuItem";
-            this.SearchStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.S)));
-            this.SearchStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.SearchStripMenuItem.Text = "搜索";
-            this.SearchStripMenuItem.Click += new System.EventHandler(this.SearchStripMenuItem_Click);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(207, 6);
             // 
             // CutScreenStripMenuItem
             // 
             this.CutScreenStripMenuItem.Name = "CutScreenStripMenuItem";
             this.CutScreenStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.C)));
-            this.CutScreenStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.CutScreenStripMenuItem.Size = new System.Drawing.Size(210, 24);
             this.CutScreenStripMenuItem.Text = "截图";
             this.CutScreenStripMenuItem.Click += new System.EventHandler(this.CutScreenStripMenuItem_Click);
             // 
             // CutHistory
             // 
             this.CutHistory.Name = "CutHistory";
-            this.CutHistory.Size = new System.Drawing.Size(180, 22);
+            this.CutHistory.Size = new System.Drawing.Size(210, 24);
             this.CutHistory.Text = "截图历史";
             this.CutHistory.Click += new System.EventHandler(this.CutHistory_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
-            // 
-            // ExitToolStripMenuItem
-            // 
-            this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.ExitToolStripMenuItem.Text = "退出";
-            this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(207, 6);
             // 
             // IsAutoOpen
             // 
             this.IsAutoOpen.Name = "IsAutoOpen";
-            this.IsAutoOpen.Size = new System.Drawing.Size(180, 22);
+            this.IsAutoOpen.Size = new System.Drawing.Size(210, 24);
             this.IsAutoOpen.Text = "XX开机自启动";
             this.IsAutoOpen.Click += new System.EventHandler(this.IsAutoOpen_Click);
             // 
+            // ExitToolStripMenuItem
+            // 
+            this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.ExitToolStripMenuItem.Text = "退出";
+            this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(196, 82);
+            this.ClientSize = new System.Drawing.Size(261, 102);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MainForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
@@ -144,7 +136,6 @@
         private System.Windows.Forms.ToolStripMenuItem ExitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem CutScreenStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripMenuItem SearchStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem CutHistory;
         private System.Windows.Forms.ToolStripMenuItem IsAutoOpen;
     }

@@ -112,10 +112,6 @@ namespace QuickTools
             {
                 CutScreenStripMenuItem_Click(null, null);
             }
-            if (HotkeyID == SearchHotkey)
-            {
-                SearchStripMenuItem_Click(null, null);
-            }
         }
 
         public MainForm()
@@ -138,12 +134,6 @@ namespace QuickTools
                 this.IsAutoOpen.Text = "开启开机自启动";
             }
 
-        }
-
-        private void SearchStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SearchForm form = new SearchForm();
-            form.ShowDialog();
         }
 
         private void CutScreenStripMenuItem_Click(object sender, EventArgs e)
