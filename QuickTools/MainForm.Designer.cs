@@ -32,7 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.DispalyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.CutScreenStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CutHistory = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,7 +52,6 @@
             // 
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.DispalyToolStripMenuItem,
             this.toolStripSeparator1,
             this.CutScreenStripMenuItem,
             this.CutHistory,
@@ -61,13 +59,7 @@
             this.IsAutoOpen,
             this.ExitToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(211, 164);
-            // 
-            // DispalyToolStripMenuItem
-            // 
-            this.DispalyToolStripMenuItem.Name = "DispalyToolStripMenuItem";
-            this.DispalyToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
-            this.DispalyToolStripMenuItem.Text = "显示";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(211, 140);
             // 
             // toolStripSeparator1
             // 
@@ -115,7 +107,7 @@
             this.ClientSize = new System.Drawing.Size(261, 102);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
@@ -131,7 +123,6 @@
 
         private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem DispalyToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem ExitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem CutScreenStripMenuItem;

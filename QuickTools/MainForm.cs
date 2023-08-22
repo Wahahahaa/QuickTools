@@ -11,7 +11,6 @@ namespace QuickTools
     public partial class MainForm : Form
     {
         private int CutHotkey;  //截图快捷键
-        private int SearchHotkey; //搜索快捷键
 
         public delegate void HotkeyEventHandler(int HotKeyID);
 
@@ -92,14 +91,12 @@ namespace QuickTools
         /*
          * 快捷键注册函数
          * 截图快捷键Alt+C
-         * 搜索快捷键Alt+S
          */
         public void SetHotKey()
         {
             Hotkey hotkey;
             hotkey = new Hotkey(this.Handle);
             CutHotkey = hotkey.RegisterHotkey(System.Windows.Forms.Keys.C, Hotkey.KeyFlags.MOD_ALT);
-            SearchHotkey = hotkey.RegisterHotkey(System.Windows.Forms.Keys.S, Hotkey.KeyFlags.MOD_ALT);
             hotkey.OnHotkey += new HotkeyEventHandler(OnHotkey);
         }
 
@@ -182,5 +179,6 @@ namespace QuickTools
         {
             this.Close();
         }
+
     }
 }
